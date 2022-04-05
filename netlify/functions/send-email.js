@@ -2,14 +2,16 @@ let apiKey = process.env.POSTMARK_API_TOKEN;
 let postmark = require("postmark")
 let client = new postmark.ServerClient(apiKey);
 
-// HOW DO WE USE THE NETLIFY ENV VARIABLE 'POSTMARK_API_TOKEN'
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const d = new Date();
+const dayName = days[d.getDay()];
 
 exports.handler = (event, context, callback) => {
     client.sendEmail(
         {
             From: "info@urban-hideout.com",
             To: "paul@urban-hideout.com",
-            Subject: "test email",
+            Subject: dayName + ' digest',
             HtmlBody: "test",
             TextBody: "test"
         }
