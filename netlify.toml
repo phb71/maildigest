@@ -1,2 +1,2 @@
-[functions."send-email.js"]
+[functions."send-email"]
 schedule = "@hourly"
