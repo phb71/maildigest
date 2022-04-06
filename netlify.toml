@@ -1,2 +1,2 @@
 [functions."send-email"]
-schedule = "@hourly"
+schedule = "*/5 * * * *"
