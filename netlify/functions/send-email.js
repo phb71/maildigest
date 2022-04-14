@@ -22,8 +22,7 @@ exports.handler = async function (event, context) {
         From: "info@urban-hideout.com",
         To: "paul@urban-hideout.com",
         Subject: dayName + ' digest',
-        // HtmlBody: weatherTemp.data.main.temp,
-        HtmlBody: "a",
+        HtmlBody: new String(weatherTemp.data.main.temp),
         TextBody: "test"
     })
 
