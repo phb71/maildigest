@@ -1,14 +1,12 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <SendEmail />
-  <CreateAccount />
+  <div id="nav">
+      <router-link to="/signup">Sign up</router-link> |
+      <router-link to="/signin">Sign in</router-link> |
+      <router-link to="/sendemail">Send email</router-link>
+  </div>
+  <router-view />
 </template>
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import SendEmail from './components/SendEmail.vue'
-import CreateAccount from './components/CreateAccount.vue'
-</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
