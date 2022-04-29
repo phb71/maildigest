@@ -1,4 +1,5 @@
 <template>
+<div>
   <p>
     <label
       >Email
@@ -13,41 +14,38 @@
   </p>
   <button @click="loginAccount">Let me back in!</button>
   <div class="message"></div>
+  </div>
 </template>
 <script>
-import GoTrue from "gotrue-js";
-
-const auth = new GoTrue({
-  APIUrl:
-    "https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity",
-  audience: "",
-  setCookie: false,
-});
+import GoTrue from 'gotrue-js'
 
 export default {
-  name: "LoginAccount",
-  data() {
+  name: 'LoginAccount',
+  data () {
     return {
       email: null,
       password: null,
-    };
+      auth: new GoTrue({
+        APIUrl:
+          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity',
+        audience: '',
+        setCookie: true
+      })
+    }
   },
-
-  mounted() {},
 
   methods: {
-    loginAccount() {
-      auth
-        .login(this.email, this.password)
+    loginAccount () {
+      this.auth
+        .login(this.email, this.password, true)
         .then((response) => {
-          console.log(
-            "Success! Response: " + JSON.stringify({ response })
-          );
+          this.$store.commit('signedIn', true)
+          this.$router.push('/account')
         })
         .catch((error) =>
-          console.log("Failed :( " + JSON.stringify(error))
-        );
-    },
-  },
-};
+          console.log('Failed :( ' + JSON.stringify(error))
+        )
+    }
+  }
+}
 </script>

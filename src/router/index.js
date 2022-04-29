@@ -1,29 +1,35 @@
-import { createWebHistory, createRouter } from "vue-router";
-import Signup from "../views/Signup.vue";
-import Signin from "../views/Signin.vue";
-import Email from "../views/Email.vue";
+import { createWebHistory, createRouter } from 'vue-router'
+import SignupPage from '../views/SignupPage.vue'
+import SigninPage from '../views/SigninPage.vue'
+import AccountPage from '../views/AccountPage.vue'
+import SignoutPage from '../views/SignoutPage.vue'
 
 const routes = [
   {
-    path: "/signup",
-    name: "Signup",
-    component: Signup,
+    path: '/signup',
+    name: 'SignupPage',
+    component: SignupPage
   },
   {
-    path: "/signin",
-    name: "Signin",
-    component: Signin,
+    path: '/signin',
+    name: 'SigninPage',
+    component: SigninPage
   },
   {
-    path: "/sendemail",
-    name: "Sendemail",
-    component: Email,
+    path: '/account',
+    name: 'AccountPage',
+    component: AccountPage
   },
-];
+  {
+    path: '/signout',
+    name: 'SignoutPage',
+    component: SignoutPage
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router
