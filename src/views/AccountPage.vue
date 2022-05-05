@@ -1,19 +1,24 @@
 <template>
 <div>
   <h1>Your account</h1>
-  <p>Your city: {{ this.$store.state.isSignedIn ? this.auth.currentUser().user_metadata.city : '' }}</p>
+  <p>Your city: {{ this.city }}</p>
   <UpdateCity />
   <br />
-  <SendEmail />
+  <SendEmail :city="this.city" />
   </div>
 </template>
 <script>
 import SendEmail from '../components/SendEmail.vue'
 import UpdateCity from '../components/UpdateCity.vue'
-import GoTrue from 'gotrue-js'
+import gotrue from '../gotrue.js'
+// import { mapState } from 'pinia'
+// import { useUser } from '../stores/user'
 
 export default {
   name: 'AccountPage',
+  computed: {
+    // ...mapState(useUser, ['loggedIn'])
+  },
   components: {
     SendEmail,
     UpdateCity
@@ -21,17 +26,14 @@ export default {
 
   data () {
     return {
-      auth: new GoTrue({
-        APIUrl:
-          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity',
-        audience: '',
-        setCookie: true
-      })
+      city: null
     }
   },
 
   mounted () {
-    if (!this.$store.state.isSignedIn) {
+    if (gotrue.auth.currentUser()) {
+      this.city = gotrue.auth.currentUser().user_metadata.city
+    } else {
       this.$router.push('/signin')
     }
   }

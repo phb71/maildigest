@@ -17,26 +17,20 @@
   </div>
 </template>
 <script>
-import GoTrue from 'gotrue-js'
+import gotrue from '../gotrue.js'
 
 export default {
   name: 'CreateAccount',
   data () {
     return {
       email: null,
-      password: null,
-      auth: new GoTrue({
-        APIUrl:
-          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity',
-        audience: '',
-        setCookie: true
-      })
+      password: null
     }
   },
 
   methods: {
     createAccount () {
-      this.auth
+      gotrue.auth
         .signup(this.email, this.password)
         .then((response) => console.log('Success', response))
         .catch((error) => console.log("It 's an error", error))

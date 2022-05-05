@@ -1,23 +1,9 @@
 import { createApp } from 'vue'
-import { createStore } from 'vuex'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
 
-const store = createStore({
-  state () {
-    return {
-      isSignedIn: false
-    }
-  },
-  mutations: {
-    signedIn (state, payload) {
-      state.isSignedIn = payload
-    }
-  }
-})
-
+const store = createPinia()
 const app = createApp(App)
 
-app.use(store)
-
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')

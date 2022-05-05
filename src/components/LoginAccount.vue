@@ -17,29 +17,34 @@
   </div>
 </template>
 <script>
-import GoTrue from 'gotrue-js'
+import gotrue from '../gotrue.js'
+// import { mapWritableState } from 'pinia'
+// import { useUser } from '../stores/user'
 
 export default {
   name: 'LoginAccount',
+  // computed: {
+  //   ...mapWritableState(useUser, ['loggedIn'])
+  // },
   data () {
     return {
       email: null,
-      password: null,
-      auth: new GoTrue({
-        APIUrl:
-          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity',
-        audience: '',
-        setCookie: true
-      })
+      password: null
     }
   },
-
+  mounted () {
+    if (gotrue.auth.currentUser()) {
+      this.$router.push('/account')
+    } else {
+      this.$router.push('/signin')
+    }
+  },
   methods: {
     loginAccount () {
-      this.auth
+      gotrue.auth
         .login(this.email, this.password, true)
         .then((response) => {
-          this.$store.commit('signedIn', true)
+          this.loggedIn = true
           this.$router.push('/account')
         })
         .catch((error) =>

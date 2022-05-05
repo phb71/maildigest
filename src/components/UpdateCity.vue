@@ -10,27 +10,20 @@
 </template>
 
 <script>
-import GoTrue from 'gotrue-js'
+import gotrue from '../gotrue.js'
 
 export default {
   name: 'UpdateCity',
-
   data () {
     return {
-      city: null,
-      auth: new GoTrue({
-        APIUrl:
-          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/identity',
-        audience: '',
-        setCookie: true
-      })
+      city: null
     }
   },
 
   methods: {
     cityChange () {
-      const user = this.auth.currentUser()
-
+      const user = gotrue.auth.currentUser()
+      this.localCity = this.city
       user
         .update({
           data: {

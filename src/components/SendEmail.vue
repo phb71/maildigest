@@ -5,14 +5,17 @@
 import axios from 'axios'
 export default {
   name: 'SendEmail',
+  props: ['city'],
   data () {
     return {
     }
   },
   methods: {
     async sendEmail () {
+      console.log('The city is ' + this.city)
+      // THIS NEEDS TO BE A POST
       const response = await axios.get(
-        'http://localhost:8888/.netlify/functions/send-email'
+        'http://localhost:8888/.netlify/functions/send-email?city=' + this.city
       )
       console.log(response)
     }
