@@ -24,7 +24,7 @@ export default {
           this.city +
           '&appid=' +
           // TO FIX HERE
-          '4aaab05e359265e8581e6fa7ff10857c' +
+          '' +
           '&units=metric'
       )
       console.log(weatherTemp)
