@@ -1,10 +1,6 @@
 <template>
   <div>
-    <input
-      type="text"
-      placeholder="where do you live"
-      v-model="city"
-    />
+    <input type="text" placeholder="City you live in?" v-model="city" />
     <button @click="cityChange">Update</button>
   </div>
 </template>
@@ -23,7 +19,6 @@ export default {
   methods: {
     cityChange () {
       const user = gotrue.auth.currentUser()
-      this.localCity = this.city
       user
         .update({
           data: {

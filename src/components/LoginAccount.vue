@@ -18,14 +18,9 @@
 </template>
 <script>
 import gotrue from '../gotrue.js'
-// import { mapWritableState } from 'pinia'
-// import { useUser } from '../stores/user'
 
 export default {
   name: 'LoginAccount',
-  // computed: {
-  //   ...mapWritableState(useUser, ['loggedIn'])
-  // },
   data () {
     return {
       email: null,

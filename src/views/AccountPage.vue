@@ -1,8 +1,11 @@
 <template>
 <div>
   <h1>Your account</h1>
-  <p>Your city: {{ this.city }}</p>
-  <UpdateCity />
+  <p>
+    <b>Your city:</b> {{ this.city }}
+  <GetTemperature v-if="this.city" :city="this.city" />
+  </p>
+  <UpdateCity :city="this.city" />
   <br />
   <SendEmail :city="this.city" />
   </div>
@@ -10,18 +13,15 @@
 <script>
 import SendEmail from '../components/SendEmail.vue'
 import UpdateCity from '../components/UpdateCity.vue'
+import GetTemperature from '../components/GetTemperature.vue'
 import gotrue from '../gotrue.js'
-// import { mapState } from 'pinia'
-// import { useUser } from '../stores/user'
 
 export default {
   name: 'AccountPage',
-  computed: {
-    // ...mapState(useUser, ['loggedIn'])
-  },
   components: {
     SendEmail,
-    UpdateCity
+    UpdateCity,
+    GetTemperature
   },
 
   data () {

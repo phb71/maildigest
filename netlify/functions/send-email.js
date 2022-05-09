@@ -22,7 +22,9 @@ const dayName = days[d.getDay()]
 exports.handler = async function (event, context) {
   const city = event.queryStringParameters.city
   const weatherTemp = await axios.get(
-    'https://api.openweathermap.org/data/2.5/weather?lat=46.6013&lon=4.0650&appid=' +
+    'https://api.openweathermap.org/data/2.5/weather?q=' +
+      city +
+      'appid=' +
       openweatherKey +
       '&units=metric'
   )

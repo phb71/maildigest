@@ -11,19 +11,14 @@
 </template>
 <script>
 import gotrue from './gotrue.js'
-// import { mapState } from 'pinia'
-// import { useUser } from './stores/user'
 
 export default {
   name: 'App',
-  data() {
-  return {
-    gotrue
+  data () {
+    return {
+      gotrue
+    }
   }
-}
-  // computed: {
-  //   ...mapState(useUser, ['loggedIn'])
-  // }
 }
 </script>
 <style>
