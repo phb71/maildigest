@@ -12,22 +12,25 @@ export default {
       temperature: null
     }
   },
-  mounted () {
-    this.loadTemperature()
+  watch: {
+    city () {
+      this.loadTemperature()
+    }
   },
   methods: {
     async loadTemperature () {
-      // // TO FIX HERE
+      // // TO FIX HERE, USE A NETLIFY FUNCTION TO RUN THIS CODE AND ACT AS PROXY
       // // const openweatherKey = import.meta.env.OPENWEATHER_API_TOKEN
       const weatherTemp = await axios.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=' +
-          this.city +
+        'https://api.openweathermap.org/data/2.5/weather?lat=' +
+          this.city.lat +
+          '&lon=' +
+          this.city.lng +
           '&appid=' +
           // TO FIX HERE
           '4aaab05e359265e8581e6fa7ff10857c' +
           '&units=metric'
       )
-      console.log(weatherTemp)
       this.temperature = weatherTemp.data.main.temp
     }
   }

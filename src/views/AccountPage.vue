@@ -2,10 +2,10 @@
 <div>
   <h1>Your account</h1>
   <p>
-    <b>Your city:</b> {{ this.city }}
+    <b>Your city:</b> {{ this.city.name }}
   <GetTemperature v-if="this.city" :city="this.city" />
   </p>
-  <UpdateCity :city="this.city" />
+  <UpdateCity />
   <br />
   <SendEmail :city="this.city" />
   </div>
@@ -26,7 +26,7 @@ export default {
 
   data () {
     return {
-      city: null
+      city: {}
     }
   },
 
