@@ -26,7 +26,7 @@ export default {
       const place = autocomplete.getPlace()
       this.city.name = place.name
       this.city.lat = place.geometry.location.lat()
-      this.city.lng = place.geometry.location.lng()
+      this.city.lon = place.geometry.location.lng()
     }
 
     autocomplete.addListener('place_changed', placeChangedListener.bind(this))

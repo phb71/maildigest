@@ -19,19 +19,10 @@ export default {
   },
   methods: {
     async loadTemperature () {
-      // // TO FIX HERE, USE A NETLIFY FUNCTION TO RUN THIS CODE AND ACT AS PROXY
-      // // const openweatherKey = import.meta.env.OPENWEATHER_API_TOKEN
-      const weatherTemp = await axios.get(
-        'https://api.openweathermap.org/data/2.5/weather?lat=' +
-          this.city.lat +
-          '&lon=' +
-          this.city.lng +
-          '&appid=' +
-          // TO FIX HERE
-          '' +
-          '&units=metric'
+      const response = await axios.get(
+        'http://localhost:8888/.netlify/functions/get-temperature?lat=' + this.city.lat + '&lon=' + this.city.lon
       )
-      this.temperature = weatherTemp.data.main.temp
+      this.temperature = response.data
     }
   }
 }
