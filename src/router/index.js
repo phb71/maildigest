@@ -6,6 +6,11 @@ import SignoutPage from '../views/SignoutPage.vue'
 
 const routes = [
   {
+    path: '/',
+    name: 'Home',
+    component: AccountPage
+  },
+  {
     path: '/signup',
     name: 'SignupPage',
     component: SignupPage
