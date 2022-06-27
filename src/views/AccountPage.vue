@@ -2,10 +2,10 @@
 <div>
   <h1>Your account</h1>
   <p>
-    <b>Your city:</b> {{ this.city.name }}
-  <GetTemperature v-if="this.city" :city="this.city" />
+    <b>Your city:</b> {{ this.city.name }} -
+  <GetTemperature v-if="this.city" :city="this.city" />°C
   </p>
-  <UpdateCity />
+  <UpdateCity @changeCity="(n) => this.city.name = n" />
   <br />
   <SendEmail :city="this.city" />
   </div>

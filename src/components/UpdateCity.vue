@@ -15,21 +15,27 @@ export default {
       city: {}
     }
   },
+  emits: ['change-city'],
   mounted () {
-    // eslint-disable-next-line no-undef
-    const autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('autocomplete')
-    )
-    autocomplete.setTypes(['locality'])
+    this.$loadScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA01AFjAYBVoReGstZYqrpsNLruXcxvBM0')
+      .then(() => {
+        const autocomplete = new google.maps.places.Autocomplete(
+          document.getElementById('autocomplete')
+        )
+        autocomplete.setTypes(['locality'])
 
-    function placeChangedListener () {
-      const place = autocomplete.getPlace()
-      this.city.name = place.name
-      this.city.lat = place.geometry.location.lat()
-      this.city.lon = place.geometry.location.lng()
-    }
+        function placeChangedListener () {
+          const place = autocomplete.getPlace()
+          this.city.name = place.name
+          this.city.lat = place.geometry.location.lat()
+          this.city.lon = place.geometry.location.lng()
+        }
 
-    autocomplete.addListener('place_changed', placeChangedListener.bind(this))
+        autocomplete.addListener('place_changed', placeChangedListener.bind(this))
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   },
   methods: {
     cityChange () {
@@ -40,7 +46,10 @@ export default {
             city: this.city
           }
         })
-        .then((user) => console.log('User updated', user))
+        .then((user) => {
+          console.log('User updated', user)
+          this.$emit('change-city', this.city.name)
+        })
         .catch((error) => {
           console.log('Failed to update user: %o', error)
           throw error

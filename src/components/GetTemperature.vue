@@ -1,5 +1,5 @@
 <template>
-  <span>- {{ this.temperature }}°C</span>
+  <span>{{ this.temperature }}</span>
 </template>
 <script>
 import axios from 'axios'
