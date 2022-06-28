@@ -12,12 +12,14 @@ export default {
   name: 'UpdateCity',
   data () {
     return {
-      city: {}
+      city: {},
+      googleKey: String
     }
   },
   emits: ['change-city'],
   mounted () {
-    this.$loadScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA01AFjAYBVoReGstZYqrpsNLruXcxvBM0')
+    this.googleKey = import.meta.env.VITE_GOOGLEPLACE_API_TOKEN
+    this.$loadScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=' + this.googleKey)
       .then(() => {
         const autocomplete = new google.maps.places.Autocomplete(
           document.getElementById('autocomplete')
