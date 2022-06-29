@@ -50,7 +50,7 @@ export default {
         })
         .then((user) => {
           console.log('User updated', user)
-          this.$emit('change-city', this.city.name)
+          this.$emit('change-city', this.city)
         })
         .catch((error) => {
           console.log('Failed to update user: %o', error)
