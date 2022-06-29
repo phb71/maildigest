@@ -39,10 +39,14 @@ export default {
 
   methods: {
     async loadTemperature () {
-      const response = await axios.get(
-        '/.netlify/functions/get-temperature?lat=' + this.city.lat + '&lon=' + this.city.lon
-      )
-      this.temperature = response.data
+      try {
+        const response = await axios.get(
+          '/.netlify/functions/get-temperature?lat=' + this.city.lat + '&lon=' + this.city.lon
+        )
+        this.temperature = response.data
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
 
