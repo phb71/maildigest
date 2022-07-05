@@ -13,10 +13,14 @@ export default {
   methods: {
     async sendEmail () {
       // THIS NEEDS TO BE A POST
-      const response = await axios.get(
-        '/.netlify/functions/send-email?city=' + this.city.name + '&lat=' + this.city.lat + '&lon=' + this.city.lon
-      )
-      console.log(response)
+      try {
+        const response = await axios.post(
+          '/.netlify/functions/send-email?city=' + this.city.name + '&lat=' + this.city.lat + '&lon=' + this.city.lon
+        )
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
