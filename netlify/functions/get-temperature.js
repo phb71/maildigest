@@ -17,6 +17,6 @@ exports.handler = async function (event, context) {
 
   return {
     statusCode: 200,
-    body: String(weatherTemp.data.main.temp)
+    body: JSON.stringify(weatherTemp.data.main.temp)
   }
 }

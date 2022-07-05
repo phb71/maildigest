@@ -12,7 +12,6 @@ export default {
   },
   methods: {
     async sendEmail () {
-      console.log('The city is ' + this.city.name)
       // THIS NEEDS TO BE A POST
       const response = await axios.get(
         '/.netlify/functions/send-email?city=' + this.city.name + '&lat=' + this.city.lat + '&lon=' + this.city.lon
