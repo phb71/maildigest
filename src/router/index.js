@@ -3,6 +3,7 @@ import SignupPage from '../views/SignupPage.vue'
 import SigninPage from '../views/SigninPage.vue'
 import AccountPage from '../views/AccountPage.vue'
 import SignoutPage from '../views/SignoutPage.vue'
+import DigestPage from '../views/DigestPage.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/signout',
     name: 'SignoutPage',
     component: SignoutPage
+  },
+  {
+    path: '/digest',
+    name: 'DigestPage',
+    component: DigestPage
   }
 ]
 

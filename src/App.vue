@@ -4,6 +4,7 @@
       <router-link to="/signup">Sign up</router-link>&nbsp;
       <router-link to="/signin">Sign in</router-link>&nbsp;
       <router-link to="/account">Account</router-link>&nbsp;
+      <router-link to="/digest">Digest</router-link>&nbsp;
     </div>
     <router-view />
   </div>
