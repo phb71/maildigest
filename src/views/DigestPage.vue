@@ -27,6 +27,7 @@ export default {
   // they are not, it will redirect them to the sign in page.
     if (gotrue.auth.currentUser()) {
       this.city = gotrue.auth.currentUser().user_metadata.city
+      this.loadTemperature()
     } else {
       this.$router.push('/signin')
     }
@@ -43,13 +44,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    }
-  },
-
-  // Watching the city variable and when it changes, it calls the loadTemperature function.
-  watch: {
-    city () {
-      this.loadTemperature()
     }
   }
 }
