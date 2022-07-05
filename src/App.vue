@@ -1,10 +1,9 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/signup">Sign up</router-link> |
-      <router-link to="/signin">Sign in</router-link> |
-      <router-link to="/account">Account</router-link> |
-      <router-link v-if="gotrue.auth.currentUser()" to="/signout">Sign out</router-link>
+      <router-link to="/signup">Sign up</router-link>&nbsp;
+      <router-link to="/signin">Sign in</router-link>&nbsp;
+      <router-link to="/account">Account</router-link>&nbsp;
     </div>
     <router-view />
   </div>

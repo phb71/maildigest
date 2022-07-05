@@ -7,6 +7,8 @@
   <UpdateCity @changeCity="(n) => this.city = n" />
   <br />
   <SendEmail :city="this.city" />
+  <br /><br />
+  <router-link to="/signout">sign out</router-link>
   </div>
 </template>
 <script>
@@ -29,6 +31,7 @@ export default {
     }
   },
 
+  // Checking if the user is logged in. If not, it redirects to the signin page.
   mounted () {
     if (gotrue.auth.currentUser()) {
       this.city = gotrue.auth.currentUser().user_metadata.city
