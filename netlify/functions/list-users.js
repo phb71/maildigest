@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 exports.handler = async (event, context) => {
   const { identity, user } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`
@@ -6,12 +8,11 @@ exports.handler = async (event, context) => {
   console.log('context', JSON.stringify(context))
   let data
   try {
-    data = await fetch(usersUrl, {
-      method: 'GET',
+    data = await axios.get(usersUrl, {
       headers: {
         Authorization: adminAuthHeader
       }
-    }).then((res) => res.json())
+    })
   } catch (e) {
     return {
       statusCode: 500,

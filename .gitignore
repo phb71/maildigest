@@ -25,3 +25,5 @@ dist-ssr
 
 # File containing environment variables (eg. API keys)
 .env
+# Local Netlify folder
+.netlify
