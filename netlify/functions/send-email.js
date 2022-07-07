@@ -1,8 +1,6 @@
-const axios = require('axios')
-
-const postmarkKey = process.env.POSTMARK_API_TOKEN
-
 const postmark = require('postmark')
+const getTemperature = require('../utilities/get-temperature')
+const postmarkKey = process.env.POSTMARK_API_TOKEN
 const emailClient = new postmark.ServerClient(postmarkKey)
 
 const days = [
@@ -21,15 +19,13 @@ const dayName = days[d.getDay()]
 exports.handler = async function (event, context) {
   const city = event.queryStringParameters.city
 
-  const temperature = await axios.get(
-    'http://localhost:8888/.netlify/functions/get-temperature?lat=' + event.queryStringParameters.lat + '&lon=' + event.queryStringParameters.lon
-  )
+  const temperature = await getTemperature(event.queryStringParameters.lat, event.queryStringParameters.lon)
 
   const emailSend = await emailClient.sendEmail({
     From: 'info@urban-hideout.com',
     To: 'paul@urban-hideout.com',
     Subject: dayName + ' digest',
-    HtmlBody: 'Weather for ' + city + ' is ' + String(temperature.data)
+    HtmlBody: 'Weather for ' + city + ' is ' + String(temperature)
   })
 
   console.log('Response:')

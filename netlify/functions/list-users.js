@@ -13,6 +13,7 @@ exports.handler = async (event, context) => {
         Authorization: adminAuthHeader
       }
     })
+    console.log('DATA: ' + data)
   } catch (e) {
     return {
       statusCode: 500,
