@@ -6,6 +6,7 @@ exports.handler = async (event, context) => {
   const adminAuthHeader = 'Bearer ' + identity.token
   console.log('event', event)
   console.log('context', context)
+  console.log(usersUrl)
   try {
     const response = await axios.get(usersUrl, {
       headers: {
