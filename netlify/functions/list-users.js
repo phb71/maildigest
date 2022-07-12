@@ -27,6 +27,6 @@ exports.handler = async (event, context) => {
   /* Returning the userEmail variable to the front end. */
   return {
     statusCode: 200,
-    body: JSON.stringify(response)
+    body: String(userEmail)
   }
 }
