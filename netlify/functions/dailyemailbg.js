@@ -6,13 +6,17 @@ const axios = require('axios')
 // 2 Call the send-email function for each
 // 4 Run it as a cron
 
-exports.handler = function (event, context) {
+exports.handler = async function (event, context) {
   // Get the list of users and their meta data
-  const users = axios.get(
+  const users = await axios.get(
     'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
   )
   console.log(users)
 
+  return {
+    statusCode: 200,
+    body: String(users)
+  }
   // Send the email
 //   try {
 //     const response = axios.post(
