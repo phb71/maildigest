@@ -1,7 +1,6 @@
-/* Getting the list of users from the Netlify Identity service. */
 const axios = require('axios')
 
-exports.handler = async (event, context) => {
+exports.handler = async (context) => {
   // eslint-disable-next-line no-unused-vars
   const { identity, user } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`

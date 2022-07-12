@@ -15,7 +15,14 @@ export default {
       // THIS NEEDS TO BE A POST
       try {
         const response = await axios.post(
-          '/.netlify/functions/send-email?city=' + this.city.name + '&lat=' + this.city.lat + '&lon=' + this.city.lon
+          '/.netlify/functions/send-email?city=' +
+          this.city.name +
+          '&lat=' +
+          this.city.lat +
+          '&lon=' +
+          this.city.lon +
+          '&email=' +
+          'paul@urban-hideout.com'
         )
         console.log(response)
       } catch (error) {

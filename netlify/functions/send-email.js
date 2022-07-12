@@ -16,14 +16,14 @@ const d = new Date()
 const dayName = days[d.getDay()]
 
 // Using Async
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
   const city = event.queryStringParameters.city
 
   const temperature = await getTemperature(event.queryStringParameters.lat, event.queryStringParameters.lon)
 
   const emailSend = await emailClient.sendEmail({
     From: 'info@urban-hideout.com',
-    To: 'paul@urban-hideout.com',
+    To: event.queryStringParameters.email,
     Subject: dayName + ' digest',
     HtmlBody: 'Weather for ' + city + ' is ' + String(temperature)
   })

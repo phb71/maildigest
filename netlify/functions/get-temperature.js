@@ -1,6 +1,6 @@
 const getTemperature = require('../utilities/get-temperature')
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
   const lat = event.queryStringParameters.lat
   const lon = event.queryStringParameters.lon
 
