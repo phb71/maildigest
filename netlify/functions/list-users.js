@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
         Authorization: adminAuthHeader
       }
     }).then((res) => res.data)
-    const userEmail = response.map(key => key.email)
+    const userEmail = response.users.map(key => key.email)
     console.log(userEmail)
   } catch (e) {
     return {
@@ -23,6 +23,6 @@ exports.handler = async (event, context) => {
   }
   return {
     statusCode: 200,
-    body: String(response) + response
+    body: JSON.stringify(response)
   }
 }
