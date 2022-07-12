@@ -1,3 +1,3 @@
 # Scheduling the function list-users to run every 5 minutes.
-[functions."list-users"]
-schedule = "*/5 * * * *"
+# [functions."list-users"]
+# schedule = "*/5 * * * *"

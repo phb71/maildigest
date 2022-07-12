@@ -2,6 +2,7 @@
 const axios = require('axios')
 
 exports.handler = async (event, context) => {
+  // eslint-disable-next-line no-unused-vars
   const { identity, user } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`
   const adminAuthHeader = 'Bearer ' + identity.token
@@ -15,7 +16,6 @@ exports.handler = async (event, context) => {
     }).then((res) => res.data)
     /* Get the email address of each user returned. */
     userEmail = response.users.map(key => key.email)
-    console.log(userEmail)
   } catch (e) {
     return {
       statusCode: 500,
