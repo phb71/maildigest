@@ -11,11 +11,11 @@ exports.handler = async function (event, context) {
   const users = await axios.get(
     'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
   ).then((res) => res.data)
-  console.log(users)
+  console.log('Users: ' + JSON.stringify(users))
 
   return {
     statusCode: 200,
-    body: String(users)
+    body: String(JSON.stringify(users))
   }
   // Send the email
 //   try {
