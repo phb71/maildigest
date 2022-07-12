@@ -11,6 +11,7 @@ exports.handler = async (event, context) => {
         Authorization: adminAuthHeader
       }
     }).then((res) => res.data)
+    console.log(response)
   } catch (e) {
     return {
       statusCode: 500,
@@ -21,6 +22,6 @@ exports.handler = async (event, context) => {
   }
   return {
     statusCode: 200,
-    body: String(response)
+    body: String(response) + response
   }
 }
