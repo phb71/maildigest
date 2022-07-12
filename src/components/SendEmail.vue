@@ -21,7 +21,7 @@ export default {
           '&lon=' +
           this.city.lon +
           '&email=' +
-          'paul@urban-hideout.com'
+          'ph.boudet@gmail.com'
         )
         console.log(response)
       } catch (error) {

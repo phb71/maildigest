@@ -52,9 +52,9 @@ exports.handler = async function (event, context) {
             element.email
         )
       }
-      console.log('Email sent: ' + response)
+      console.log('Email sent: ' + JSON.stringify(response))
     } catch (error) {
-      console.log(error)
+      console.log('Error: ' + error)
     }
   })
 
