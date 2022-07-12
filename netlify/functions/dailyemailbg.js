@@ -8,7 +8,7 @@ const axios = require('axios')
 
 exports.handler = async function (event, context) {
   let users
-  let result
+  let result = ''
 
   // Get the list of users and their meta data
   try {
@@ -27,7 +27,7 @@ exports.handler = async function (event, context) {
   }
 
   users.forEach(element => {
-    result += element.email + '\n'
+    result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
   })
 
   return {
