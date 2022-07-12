@@ -4,16 +4,15 @@ exports.handler = async (event, context) => {
   const { identity, user } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`
   const adminAuthHeader = 'Bearer ' + identity.token
-  console.log('event', JSON.stringify(event))
-  console.log('context', JSON.stringify(context))
-  let data
+  console.log('event', event)
+  console.log('context', context)
   try {
-    data = await axios.get(usersUrl, {
+    const response = await axios.get(usersUrl, {
       headers: {
         Authorization: adminAuthHeader
       }
     })
-    console.log('DATA: ' + Object.keys(data))
+    console.log('DATA: ' + response.data)
   } catch (e) {
     return {
       statusCode: 500,
