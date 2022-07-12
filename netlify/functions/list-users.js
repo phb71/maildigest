@@ -11,7 +11,8 @@ exports.handler = async (event, context) => {
         Authorization: adminAuthHeader
       }
     }).then((res) => res.data)
-    console.log(response)
+    const userEmail = response.map(key => key.email)
+    console.log(userEmail)
   } catch (e) {
     return {
       statusCode: 500,
