@@ -7,15 +7,32 @@ const axios = require('axios')
 // 4 Run it as a cron
 
 exports.handler = async function (event, context) {
+  let users
+  let result
+
   // Get the list of users and their meta data
-  const users = await axios.get(
-    'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
-  ).then((res) => res.data)
-  console.log('Users: ' + JSON.stringify(users))
-  console.log('users[0].email: ' + users[0].email)
+  try {
+    users = await axios.get(
+      'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
+    ).then((res) => res.data)
+    console.log('Users: ' + JSON.stringify(users))
+    console.log('users[0].email: ' + users[0].email)
+  } catch (e) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: e.message
+      })
+    }
+  }
+
+  users.forEach(element => {
+    result += element.email + '\n'
+  })
+
   return {
     statusCode: 200,
-    body: String(JSON.stringify(users))
+    body: result
   }
   // Send the email
 //   try {
