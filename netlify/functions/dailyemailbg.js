@@ -1,3 +1,4 @@
+// This will need to be a background function later (paid plan)
 const axios = require('axios')
 
 // TODO
