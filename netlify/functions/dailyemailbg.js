@@ -13,7 +13,7 @@ exports.handler = async function (event, context) {
   // Get the list of users and their meta data
   try {
     users = await axios.get(
-      'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
+      'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/get-users'
     ).then((res) => res.data)
     console.log('Users: ' + JSON.stringify(users))
     console.log('users[0].email: ' + users[0].email)
