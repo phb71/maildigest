@@ -34,6 +34,7 @@ exports.handler = async function (event, context) {
     // Send the email
     try {
       if (element.metadata.city) {
+        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name)
         response = axios.post(
           'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=' +
             element.metadata.city.name +
@@ -45,6 +46,7 @@ exports.handler = async function (event, context) {
             element.email
         )
       } else {
+        console.log('Sending email to ' + element.email + ' when no metadata found')
         response = axios.post(
           'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=none&lat=1&lon=1&email=' +
             element.email

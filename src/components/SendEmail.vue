@@ -12,7 +12,6 @@ export default {
   },
   methods: {
     async sendEmail () {
-      // THIS NEEDS TO BE A POST
       try {
         const response = await axios.post(
           '/.netlify/functions/send-email?city=' +
