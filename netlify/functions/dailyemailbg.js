@@ -12,7 +12,7 @@ exports.handler = async function (event, context) {
     'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/list-users'
   ).then((res) => res.data)
   console.log('Users: ' + JSON.stringify(users))
-
+  console.log('users[0].email: ' + users[0].email)
   return {
     statusCode: 200,
     body: String(JSON.stringify(users))
