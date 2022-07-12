@@ -2,9 +2,10 @@
 const axios = require('axios')
 
 // TODO
-// 1 Get the list of users and their meta data
-// 2 Call the send-email function for each
-// 4 Run it as a cron
+// 1 Get the list of users and their meta data ✅
+// 2 Populate the email content ???
+// 3 Call the send-email function for each ✔️
+// 4 Run it as a cron ✔️
 
 exports.handler = async function (event, context) {
   let users
@@ -26,28 +27,37 @@ exports.handler = async function (event, context) {
     }
   }
 
+  /* Loop through the users array and adds the email and city to the result variable. */
   users.forEach(element => {
+    let response
     result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
+    // Send the email
+    try {
+      if (element.metadata.city) {
+        response = axios.post(
+          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=' +
+            element.metadata.city.name +
+            '&lat=' +
+            element.metadata.city.lat +
+            '&lon=' +
+            element.metadata.city.lon +
+            '&email=' +
+            element.email
+        )
+      } else {
+        response = axios.post(
+          'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=none&lat=1&lon=1&email=' +
+            element.email
+        )
+      }
+      console.log('Email sent: ' + response)
+    } catch (error) {
+      console.log(error)
+    }
   })
 
   return {
     statusCode: 200,
     body: result
   }
-  // Send the email
-//   try {
-//     const response = axios.post(
-//       'http://localhost:8888/.netlify/functions/send-email?city=' +
-//           'paris' +
-//           '&lat=' +
-//           '10' +
-//           '&lon=' +
-//           '20' +
-//           '&email=' +
-//           'paul@urban-hideout.com'
-//     )
-//     console.log(response)
-//   } catch (error) {
-//     console.log(error)
-//   }
 }
