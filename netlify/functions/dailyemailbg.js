@@ -9,7 +9,7 @@ const axios = require('axios')
 exports.handler = function (event, context) {
   // Get the list of users and their meta data
   const users = axios.get(
-    'http://localhost:8888/.netlify/functions/list-users'
+    '/.netlify/functions/list-users'
   )
   console.log(users)
 
