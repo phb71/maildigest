@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
       }
     }).then((res) => res.data)
     /* Get the email address of each user returned. */
-    userEmail = response.users.map(key => key.email)
+    userEmail = response.users.map(key => ({ email: key.email, city: key.user_metadata.city.name }))
     console.log(userEmail)
   } catch (e) {
     return {

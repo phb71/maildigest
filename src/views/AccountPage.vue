@@ -38,6 +38,7 @@ export default {
     } else {
       this.$router.push('/signin')
     }
+    this.testMap()
   },
 
   methods: {
@@ -50,6 +51,13 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    testMap () {
+      const tab1 = [{ email: 'p@p.com', name: 'paul', city: 'sf' }, { email: 'd@d.com', name: 'david', city: 'nyc' }]
+      console.log(tab1)
+      const userEmail = tab1.map(key => ({ email: key.email, city: key.city }))
+      console.log(userEmail)
     }
   },
 
