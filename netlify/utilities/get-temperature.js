@@ -11,5 +11,6 @@ module.exports = async function (lat, lon) {
           openweatherKey +
           '&units=metric'
   )
+  console.log(weatherTemp.data.main.temp + '°C')
   return weatherTemp.data.main.temp
 }

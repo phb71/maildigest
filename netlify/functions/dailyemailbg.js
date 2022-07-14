@@ -1,4 +1,4 @@
-// This will need to be a background function later (paid plan)
+// Later, this will need to be a netlify background function (paid plan)
 
 const getUsers = require('../utilities/get-users')
 const sendEmail = require('../utilities/send-email')
@@ -21,7 +21,7 @@ exports.handler = async function (event, context) {
     console.log(result)
     try {
       if (element.metadata.city) {
-        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name)
+        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name + element.metadata.city.lat + element.metadata.city.ln)
         response = await sendEmail(element.email, element.metadata.city.name, element.metadata.city.lat, element.metadata.city.ln)
       } else {
         console.log('Sending email to ' + element.email + ' when no metadata found')

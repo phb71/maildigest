@@ -15,6 +15,7 @@ module.exports = async function (email, city, lat, ln) {
   ]
   const d = new Date()
   const dayName = days[d.getDay()]
+  console.log(lat + ln)
   const temperature = await getTemperature(lat, ln)
   const emailSend = await emailClient.sendEmail({
     From: 'info@urban-hideout.com',
