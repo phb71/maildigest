@@ -5,6 +5,8 @@ import AccountPage from '../views/AccountPage.vue'
 import SignoutPage from '../views/SignoutPage.vue'
 import DigestPage from '../views/DigestPage.vue'
 
+console.log('Loading router')
+
 const routes = [
   {
     path: '/',

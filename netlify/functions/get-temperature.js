@@ -1,13 +1,15 @@
-const getTemperature = require('../utilities/get-temperature')
+// console.log('Netlify function - get-temperature.js')
 
-exports.handler = async function (event) {
-  const lat = event.queryStringParameters.lat
-  const lon = event.queryStringParameters.lon
+// const getTemperature = require('../utilities/get-temperature')
 
-  const temperature = await getTemperature(lat, lon)
+// exports.handler = async function (event) {
+//   const lat = event.queryStringParameters.lat
+//   const lon = event.queryStringParameters.lon
 
-  return {
-    statusCode: 200,
-    body: String(temperature)
-  }
-}
+//   const temperature = await getTemperature(lat, lon)
+
+//   return {
+//     statusCode: 200,
+//     body: String(temperature)
+//   }
+// }

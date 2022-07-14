@@ -7,6 +7,8 @@
 <script>
 import CreateAccount from '../components/CreateAccount.vue'
 
+console.log('Vue view - SignupPage.vue')
+
 export default {
   name: 'SignupPage',
   components: {

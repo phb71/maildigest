@@ -8,6 +8,8 @@
 <script>
 import gotrue from '../gotrue.js'
 
+console.log('Vue component - UpdateCity.vue')
+
 export default {
   name: 'UpdateCity',
   data () {

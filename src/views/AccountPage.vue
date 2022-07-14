@@ -17,6 +17,8 @@ import UpdateCity from '../components/UpdateCity.vue'
 import gotrue from '../gotrue.js'
 import axios from 'axios'
 
+console.log('Vue view - AccountPage.vue')
+
 export default {
   name: 'AccountPage',
   components: {

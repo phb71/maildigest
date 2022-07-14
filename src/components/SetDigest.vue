@@ -5,6 +5,8 @@
   </div>
 </template>
 <script>
+console.log('Vue component - SetDigest.vue')
+
 export default {
   name: 'SetDigest',
   data () {

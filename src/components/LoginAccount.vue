@@ -19,6 +19,8 @@
 <script>
 import gotrue from '../gotrue.js'
 
+console.log('Vue component - LoginAccount.vue')
+
 export default {
   name: 'LoginAccount',
   data () {

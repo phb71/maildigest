@@ -1,3 +1,5 @@
+console.log('Utility - get-users.js')
+
 const axios = require('axios')
 
 module.exports = async function (context) {
@@ -14,7 +16,6 @@ module.exports = async function (context) {
     }).then((res) => res.data)
     /* Get the email address of each user returned. */
     userEmail = response.users.map(key => ({ email: key.email, metadata: key.user_metadata }))
-    console.log(userEmail)
   } catch (e) {
     return {
       statusCode: 500,

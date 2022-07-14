@@ -7,6 +7,8 @@
 <script>
 import LoginAccount from '../components/LoginAccount.vue'
 
+console.log('Vue view - SigninPage.vue')
+
 export default {
   name: 'SigninPage',
   components: {

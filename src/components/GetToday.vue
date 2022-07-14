@@ -4,6 +4,8 @@
 </span>
 </template>
 <script>
+console.log('Vue component - GetToday.vue')
+
 export default {
   name: 'GetToday',
   data () {

@@ -3,6 +3,9 @@
 </template>
 <script>
 import axios from 'axios'
+
+console.log('Vue component - SendEmail.vue')
+
 export default {
   name: 'SendEmail',
   props: ['city'],

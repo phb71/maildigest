@@ -6,6 +6,8 @@
 <script>
 import gotrue from '../gotrue.js'
 
+console.log('Vue view - SignoutPage.vue')
+
 export default {
   name: 'SignoutPage',
 

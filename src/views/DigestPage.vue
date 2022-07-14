@@ -10,6 +10,8 @@ import gotrue from '../gotrue.js'
 import axios from 'axios'
 import GetToday from '../components/GetToday.vue'
 
+console.log('Vue view - DigestPage.vue')
+
 export default {
   name: 'DigestPage',
   components: {

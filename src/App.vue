@@ -12,6 +12,8 @@
 <script>
 import gotrue from './gotrue.js'
 
+console.log('Firing App.vue')
+
 export default {
   name: 'App',
   data () {

@@ -19,6 +19,8 @@
 <script>
 import gotrue from '../gotrue.js'
 
+console.log('Vue component - CreateAccount.vue')
+
 export default {
   name: 'CreateAccount',
   data () {
