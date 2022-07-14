@@ -1,5 +1,7 @@
 // This will need to be a background function later (paid plan)
+
 const axios = require('axios')
+const getUsers = require('../utilities/get-users')
 
 // TODO
 // 1 Get the list of users and their meta data ✅
@@ -9,25 +11,8 @@ const axios = require('axios')
 // 5 Turn these 2 functions into utilities
 
 exports.handler = async function (event, context) {
-  let users
   let result = ''
-
-  // Get the list of users and their meta data
-  try {
-    users = await axios.get(
-      'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/get-users'
-    ).then((res) => res.data)
-    console.log('Users: ' + JSON.stringify(users))
-    console.log('users[0].email: ' + users[0].email)
-  } catch (e) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        error: e.message
-      })
-    }
-  }
-
+  const users = await getUsers(context)
   /* Loop through the users array and adds the email and city to the result variable. */
   for (const element of users) {
     let response
