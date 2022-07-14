@@ -1,7 +1,7 @@
 // This will need to be a background function later (paid plan)
 
-const axios = require('axios')
 const getUsers = require('../utilities/get-users')
+const sendEmail = require('../utilities/send-email')
 
 // TODO
 // 1 Get the list of users and their meta data ✅
@@ -11,7 +11,7 @@ const getUsers = require('../utilities/get-users')
 // 5 Turn these 2 functions into utilities
 
 exports.handler = async function (event, context) {
-  let result = ''
+  let result
   const users = await getUsers(context)
   console.log(users)
   /* Loop through the users array and adds the email and city to the result variable. */
@@ -19,33 +19,20 @@ exports.handler = async function (event, context) {
     let response
     result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
     console.log(result)
-    // Send the email
-    // try {
-    //   if (element.metadata.city) {
-    //     console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name)
-    //     response = await axios.post(
-    //       'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=' +
-    //         element.metadata.city.name +
-    //         '&lat=' +
-    //         element.metadata.city.lat +
-    //         '&lon=' +
-    //         element.metadata.city.lon +
-    //         '&email=' +
-    //         element.email
-    //     )
-    //   } else {
-    //     console.log('Sending email to ' + element.email + ' when no metadata found')
-    //     response = await axios.post(
-    //       'https://imaginative-sfogliatella-76a713.netlify.app/.netlify/functions/send-email?city=none&lat=1&lon=1&email=' +
-    //         element.email
-    //     )
-    //   }
-    //   console.log('Email sent: ' + JSON.stringify(response))
-    // } catch (error) {
-    //   console.log('Error: ' + error)
-    // }
+    try {
+      if (element.metadata.city) {
+        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name)
+        response = await sendEmail(element.email, element.city.name, element.city.lat, element.city.ln)
+      } else {
+        console.log('Sending email to ' + element.email + ' when no metadata found')
+        response = await sendEmail(element.email, 'none', '1', '1')
+      }
+      console.log('Email sent: ' + JSON.stringify(response))
+    } catch (error) {
+      console.log('Error: ' + error)
+    }
   }
-console.log('the end')
+
   return {
     statusCode: 200,
     body: result
