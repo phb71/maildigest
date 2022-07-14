@@ -17,7 +17,11 @@ exports.handler = async function (event, context) {
   /* Loop through the users array and adds the email and city to the result variable. */
   for (const element of users) {
     let response
-    result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
+    console.log(element.email)
+    console.log(element.metadata)
+    console.log(element.city)
+    console.log('next')
+    // result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
     // Send the email
     // try {
     //   if (element.metadata.city) {
