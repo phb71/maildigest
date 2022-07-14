@@ -1,4 +1,4 @@
-module.exports = async function (email, city, lat, ln) {
+module.exports = async function (email, city, lat, lon) {
   const postmark = require('postmark')
   const getTemperature = require('../utilities/get-temperature')
   const postmarkKey = process.env.POSTMARK_API_TOKEN
@@ -15,8 +15,8 @@ module.exports = async function (email, city, lat, ln) {
   ]
   const d = new Date()
   const dayName = days[d.getDay()]
-  console.log(lat + ln)
-  const temperature = await getTemperature(lat, ln)
+  console.log(lat + lon)
+  const temperature = await getTemperature(lat, lon)
   const emailSend = await emailClient.sendEmail({
     From: 'info@urban-hideout.com',
     To: email,

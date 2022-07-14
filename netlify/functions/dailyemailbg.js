@@ -19,10 +19,11 @@ exports.handler = async function (event, context) {
     let response
     result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
     console.log(result)
+    console.log(element.metadata.city)
     try {
       if (element.metadata.city) {
-        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name + element.metadata.city.lat + element.metadata.city.ln)
-        response = await sendEmail(element.email, element.metadata.city.name, element.metadata.city.lat, element.metadata.city.ln)
+        console.log('Sending email to ' + element.email + ' in ' + element.metadata.city.name + element.metadata.city.lat + element.metadata.city.lon)
+        response = await sendEmail(element.email, element.metadata.city.name, element.metadata.city.lat, element.metadata.city.lon)
       } else {
         console.log('Sending email to ' + element.email + ' when no metadata found')
         response = await sendEmail(element.email, 'none', '1', '1')
