@@ -12,9 +12,9 @@ exports.handler = async function (event, context) {
     // Send the email
     try {
       if (element.metadata.city) {
-        await sendEmail(element.email, element.metadata.city.name, element.metadata.city.lat, element.metadata.city.lon)
+        await sendEmail(element.email, element.metadata.full_name, element.metadata.city.name, element.metadata.city.lat, element.metadata.city.lon)
       } else {
-        await sendEmail(element.email, 'none', '1', '1')
+        await sendEmail(element.email, element.metadata.full_name, 'none', '1', '1')
       }
     } catch (error) {
       console.log('Error: ' + error)

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input id="autocomplete" type="text" placeholder="City you live in?" v-model="city.name" />
+    <input id="autocomplete" type="text" placeholder="Update your city" v-model="city.name" />
     <button @click="cityChange">Update</button>
   </div>
 </template>

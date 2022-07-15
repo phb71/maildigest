@@ -1,5 +1,5 @@
 <template>
-    <button @click="sendEmail">send email</button>
+    <button @click="sendEmail">Send yourself a preview email</button>
 </template>
 <script>
 import axios from 'axios'
@@ -8,7 +8,7 @@ console.log('Vue component - SendEmail.vue')
 
 export default {
   name: 'SendEmail',
-  props: ['city'],
+  props: ['city', 'email', 'firstName'],
   data () {
     return {
     }
@@ -24,7 +24,9 @@ export default {
           '&lon=' +
           this.city.lon +
           '&email=' +
-          'ph.boudet@gmail.com'
+          this.email +
+          '&firstname=' +
+          this.firstName
         )
         console.log(response)
       } catch (error) {

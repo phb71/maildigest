@@ -1,19 +1,30 @@
 <template>
 <div>
   <h1>Your account</h1>
-  <p>
-    <b>Your city:</b> {{ this.city.name }} - {{ this.temperature }}°C
-  </p>
-  <UpdateCity @changeCity="(n) => this.city = n" />
-  <br />
-  <SendEmail :city="this.city" />
-  <br /><br />
-  <router-link to="/signout">sign out</router-link>
+    <h2>Personal info</h2>
+      <b>Name:</b> {{ this.firstName || 'Not set'}}
+      <p><UpdateName @changeName="(n) => this.firstName = n" /></p>
+    <h2>Location</h2>
+      <b>City:</b> {{ this.city.name || 'Not set' }}
+      <br />
+      <b>Temperature:</b> {{ this.temperature }}°C
+      <p><UpdateCity @changeCity="(n) => this.city = n" /></p>
+    <h2>Digest</h2>
+      <p>
+        <SendEmail
+        :city="this.city"
+        :email="this.email"
+        :firstName="this.firstName"
+        />
+      </p>
+      <br />
+    <router-link to="/signout">sign out</router-link>
   </div>
 </template>
 <script>
 import SendEmail from '../components/SendEmail.vue'
 import UpdateCity from '../components/UpdateCity.vue'
+import UpdateName from '../components/UpdateName.vue'
 import gotrue from '../gotrue.js'
 import axios from 'axios'
 
@@ -23,20 +34,25 @@ export default {
   name: 'AccountPage',
   components: {
     SendEmail,
-    UpdateCity
+    UpdateCity,
+    UpdateName
   },
 
   data () {
     return {
       city: {},
-      temperature: null
+      firstName: null,
+      email: null,
+      temperature: undefined
     }
   },
 
   // Checking if the user is logged in. If not, it redirects to the signin page.
   mounted () {
     if (gotrue.auth.currentUser()) {
-      this.city = gotrue.auth.currentUser().user_metadata.city
+      this.city = gotrue.auth.currentUser().user_metadata.city || { name: undefined }
+      this.firstName = gotrue.auth.currentUser().user_metadata.full_name || undefined
+      this.email = gotrue.auth.currentUser().email || undefined
     } else {
       this.$router.push('/signin')
     }
@@ -57,7 +73,7 @@ export default {
 
   watch: {
     city () {
-      this.loadTemperature()
+      this.city.name ? this.loadTemperature() : this.temperature = undefined
     }
   }
 }

@@ -12,7 +12,7 @@ exports.handler = async (event) => {
   }
   if (event.queryStringParameters.name === 'send-email') {
     const sendEmail = require('../utilities/send-email')
-    utilityValue = await sendEmail(event.queryStringParameters.email, event.queryStringParameters.city, event.queryStringParameters.lat, event.queryStringParameters.lon)
+    utilityValue = await sendEmail(event.queryStringParameters.email, event.queryStringParameters.firstname, event.queryStringParameters.city, event.queryStringParameters.lat, event.queryStringParameters.lon)
   }
   return {
     statusCode: 200,
