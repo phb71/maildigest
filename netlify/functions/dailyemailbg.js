@@ -6,11 +6,9 @@ const getUsers = require('../utilities/get-users')
 const sendEmail = require('../utilities/send-email')
 
 exports.handler = async function (event, context) {
-  let result
   const users = await getUsers(context)
   /* Loop through the users array and adds the email address and city to the result variable. */
   for (const element of users) {
-    result += element.email + (element.metadata.city ? ', living in ' + element.metadata.city.name + '\n' : '\n')
     // Send the email
     try {
       if (element.metadata.city) {
@@ -25,6 +23,6 @@ exports.handler = async function (event, context) {
 
   return {
     statusCode: 200,
-    body: result
+    body: users
   }
 }

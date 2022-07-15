@@ -1,8 +1,8 @@
-console.log('Utility - get-users.js')
-
 const axios = require('axios')
 
 module.exports = async function (context) {
+  console.log('Utility - get-users.js')
+
   const { identity } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`
   const adminAuthHeader = `Bearer ${identity.token}`
