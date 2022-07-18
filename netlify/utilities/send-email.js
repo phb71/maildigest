@@ -44,9 +44,8 @@ module.exports = async function (email, firstName, city, lat, lon) {
     From: 'info@urban-hideout.com',
     To: email,
     Subject: String.fromCodePoint(0x1F4EC) + ' Digest for ' + dayName,
-    HtmlBody: getDigest + 'Weather for ' + city + ' is ' + String(temperature)
+    HtmlBody: getDigest
   })
-  console.log(getDigest)
   return {
     statusCode: 200
   }

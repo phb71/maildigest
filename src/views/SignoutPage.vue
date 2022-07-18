@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import gotrue from '../gotrue.js'
+import gotrue from '../shared/gotrue.js'
 
 console.log('Vue view - SignoutPage.vue')
 

@@ -1,25 +1,23 @@
 <template>
 <div>
   <h1>Your daily digest</h1>
-  <h4>Today is <i><GetToday /></i></h4>
+  <h4>Today is <i>{{ this.today }}</i></h4>
   <h4>The temperature in <i>{{ this.city.name }}</i> is <i>{{ this.temperature }}°C</i></h4>
 </div>
 </template>
 <script>
-import gotrue from '../gotrue.js'
+import gotrue from '../shared/gotrue.js'
+// import weekDay from '../shared/weekday.js'
 import axios from 'axios'
-import GetToday from '../components/GetToday.vue'
 
 console.log('Vue view - DigestPage.vue')
 
 export default {
   name: 'DigestPage',
-  components: {
-    GetToday
-  },
   data () {
     return {
       city: {},
+      // today: weekDay(),
       temperature: null
     }
   },

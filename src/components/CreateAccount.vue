@@ -12,30 +12,49 @@
         <input type="password" v-model="password" required />
       </label>
     </p>
-    <button @click="createAccount">Sign me up!</button>
-    <div class="message"></div>
+    <button @click="createAccount" :disabled='this.loading'>Sign me up!</button>
+    <LoadingElement :loading="this.loading" />
+    <FormSubmission :msg="this.msg" />
   </div>
 </template>
 <script>
-import gotrue from '../gotrue.js'
+import LoadingElement from '../components/LoadingElement.vue'
+import FormSubmission from '../components/FormSubmission.vue'
+import gotrue from '../shared/gotrue.js'
 
 console.log('Vue component - CreateAccount.vue')
 
 export default {
   name: 'CreateAccount',
+  components: {
+    LoadingElement,
+    FormSubmission
+  },
   data () {
     return {
       email: null,
-      password: null
+      password: null,
+      loading: false,
+      msg: 0
     }
   },
 
   methods: {
     createAccount () {
+      this.loading = true
+      this.msg = 0
       gotrue.auth
         .signup(this.email, this.password)
-        .then((response) => console.log('Success', response))
-        .catch((error) => console.log("It 's an error", error))
+        .then((response) => {
+          console.log('Success', response)
+          this.loading = false
+          this.msg = 1
+        })
+        .catch((error) => {
+          console.log("It 's an error", error)
+          this.loading = false
+          this.msg = 2
+        })
     }
   }
 }

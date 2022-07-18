@@ -12,21 +12,30 @@
       <input type="password" v-model="password" required />
     </label>
   </p>
-  <button @click="loginAccount">Let me back in!</button>
-  <div class="message"></div>
+  <button @click="loginAccount" :disabled='this.loading'>Let me back in!</button>
+  <LoadingElement :loading="this.loading" />
+  <FormSubmission :msg="this.msg" />
   </div>
 </template>
 <script>
-import gotrue from '../gotrue.js'
+import LoadingElement from '../components/LoadingElement.vue'
+import FormSubmission from '../components/FormSubmission.vue'
+import gotrue from '../shared/gotrue.js'
 
 console.log('Vue component - LoginAccount.vue')
 
 export default {
   name: 'LoginAccount',
+  components: {
+    LoadingElement,
+    FormSubmission
+  },
   data () {
     return {
       email: null,
-      password: null
+      password: null,
+      loading: false,
+      msg: 0
     }
   },
   mounted () {
@@ -38,15 +47,20 @@ export default {
   },
   methods: {
     loginAccount () {
+      this.loading = true
+      this.msg = 0
       gotrue.auth
         .login(this.email, this.password, true)
         .then((response) => {
-          this.loggedIn = true
+          this.msg = 1
           this.$router.push('/account')
+          this.loading = false
         })
-        .catch((error) =>
+        .catch((error) => {
+          this.msg = 2
           console.log('Failed :( ' + JSON.stringify(error))
-        )
+          this.loading = false
+        })
     }
   }
 }

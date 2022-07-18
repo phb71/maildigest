@@ -1,21 +1,31 @@
 <template>
   <div>
     <input id="autocomplete" type="text" placeholder="Update your city" v-model="city.name" />
-    <button @click="cityChange">Update</button>
+    <button @click="cityChange" :disabled='this.loading'>Update</button>
+    <LoadingElement :loading="this.loading" />
+    <FormSubmission :msg="this.msg" />
   </div>
 </template>
 
 <script>
-import gotrue from '../gotrue.js'
+import LoadingElement from '../components/LoadingElement.vue'
+import FormSubmission from '../components/FormSubmission.vue'
+import gotrue from '../shared/gotrue.js'
 
 console.log('Vue component - UpdateCity.vue')
 
 export default {
   name: 'UpdateCity',
+  components: {
+    LoadingElement,
+    FormSubmission
+  },
   data () {
     return {
       city: {},
-      googleKey: String
+      googleKey: String,
+      loading: false,
+      msg: 0
     }
   },
   emits: ['change-city'],
@@ -43,6 +53,8 @@ export default {
   },
   methods: {
     cityChange () {
+      this.loading = true
+      this.msg = 0
       const user = gotrue.auth.currentUser()
       user
         .update({
@@ -53,9 +65,13 @@ export default {
         .then((user) => {
           console.log('User updated', user)
           this.$emit('change-city', this.city)
+          this.loading = false
+          this.msg = 1
         })
         .catch((error) => {
           console.log('Failed to update user: %o', error)
+          this.loading = false
+          this.msg = 2
           throw error
         })
     }

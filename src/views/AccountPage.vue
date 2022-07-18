@@ -25,7 +25,7 @@
 import SendEmail from '../components/SendEmail.vue'
 import UpdateCity from '../components/UpdateCity.vue'
 import UpdateName from '../components/UpdateName.vue'
-import gotrue from '../gotrue.js'
+import gotrue from '../shared/gotrue.js'
 import axios from 'axios'
 
 console.log('Vue view - AccountPage.vue')
