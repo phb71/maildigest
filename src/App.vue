@@ -20,6 +20,23 @@ export default {
     return {
       gotrue
     }
+  },
+  mounted () {
+    if (window.location.hash) {
+      const tokenRecovery = window.location.hash.split('recovery_token=')[1]
+      if (tokenRecovery) {
+        console.log('recover_token')
+        gotrue.auth
+          .recover(tokenRecovery, true)
+          .then(response => {
+            console.log(response)
+            this.$router.push('/resetpassword')
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    }
   }
 }
 </script>

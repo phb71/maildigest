@@ -17,8 +17,9 @@
         :firstName="this.firstName"
         />
       </p>
-      <br />
-    <router-link to="/signout">sign out</router-link>
+    <br />
+    <p><router-link to="/resetpassword">reset password</router-link></p>
+    <p><router-link to="/signout">sign out</router-link></p>
   </div>
 </template>
 <script>
