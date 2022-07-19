@@ -1,3 +1,8 @@
 # Scheduling the function dailyemail to run every 5 minutes.
 # [functions."dailyemail-background"]
 # schedule = "*/5 * * * *"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
