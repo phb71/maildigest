@@ -46,6 +46,7 @@ export default {
     }
   },
   methods: {
+    // This method logs the user in.
     loginAccount () {
       this.loading = true
       this.msg = 0

@@ -60,6 +60,7 @@ export default {
   },
 
   methods: {
+    // Get the temperature of the user's city through a netlify function and OpenWeatherMap API.
     async loadTemperature () {
       try {
         const response = await axios.get(

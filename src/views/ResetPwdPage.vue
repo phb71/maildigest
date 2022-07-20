@@ -42,11 +42,13 @@ export default {
     }
   },
   mounted () {
+    // Checking if the user is logged in and displaying the content accordingly
     if (gotrue.auth.currentUser()) {
       this.resetpwd = true
     }
   },
   methods: {
+    // This method sends a password recovery email to the user.
     recoverPassword () {
       this.loading = true
       this.msg = 0
@@ -63,6 +65,7 @@ export default {
         })
     },
 
+    // This method resets the user's password.
     resetPassword () {
       if (this.pwd1 !== this.pwd2) {
         alert('Passwords do not match')
