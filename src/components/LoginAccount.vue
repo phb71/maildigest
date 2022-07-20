@@ -12,13 +12,11 @@
       <input type="password" v-model="password" required />
     </label>
   </p>
-  <button @click="loginAccount" :disabled='this.loading'>Let me back in!</button>
-  <LoadingElement :loading="this.loading" />
+  <button :class="{ loading: this.loading }" @click="loginAccount" :disabled='this.loading'>Let me back in!</button>
   <FormSubmission :msg="this.msg" />
   </div>
 </template>
 <script>
-import LoadingElement from '../components/LoadingElement.vue'
 import FormSubmission from '../components/FormSubmission.vue'
 import gotrue from '../shared/gotrue.js'
 
@@ -27,7 +25,6 @@ console.log('Vue component - LoginAccount.vue')
 export default {
   name: 'LoginAccount',
   components: {
-    LoadingElement,
     FormSubmission
   },
   data () {

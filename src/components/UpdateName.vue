@@ -1,14 +1,12 @@
 <template>
   <div>
     <input type="text" placeholder="Change your name" v-model="name" />
-    <button @click="nameChange" :disabled='this.loading'>Update</button>
-    <LoadingElement :loading="this.loading" />
+    <button :class="{ loading: this.loading }" @click="nameChange" :disabled='this.loading'>Update</button>
     <FormSubmission :msg="this.msg" />
   </div>
 </template>
 
 <script>
-import LoadingElement from '../components/LoadingElement.vue'
 import FormSubmission from '../components/FormSubmission.vue'
 import gotrue from '../shared/gotrue.js'
 
@@ -17,7 +15,6 @@ console.log('Vue component - UpdateName.vue')
 export default {
   name: 'UpdateName',
   components: {
-    LoadingElement,
     FormSubmission
   },
   data () {

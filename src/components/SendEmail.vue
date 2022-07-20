@@ -1,12 +1,10 @@
 <template>
   <div>
-    <button @click="sendEmail" :disabled='this.loading'>Send yourself a preview email</button>
-    <LoadingElement :loading="this.loading" />
+    <button :class="{ loading: this.loading }" @click="sendEmail" :disabled='this.loading'>Send yourself a preview email</button>
     <FormSubmission :msg="this.msg" />
   </div>
 </template>
 <script>
-import LoadingElement from '../components/LoadingElement.vue'
 import FormSubmission from '../components/FormSubmission.vue'
 import axios from 'axios'
 
@@ -16,7 +14,6 @@ export default {
   name: 'SendEmail',
   props: ['city', 'email', 'firstName'],
   components: {
-    LoadingElement,
     FormSubmission
   },
   data () {

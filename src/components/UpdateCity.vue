@@ -1,14 +1,12 @@
 <template>
   <div>
     <input id="autocomplete" type="text" placeholder="Update your city" v-model="city.name" />
-    <button @click="cityChange" :disabled='this.loading'>Update</button>
-    <LoadingElement :loading="this.loading" />
+    <button :class="{ loading: this.loading }" @click="cityChange" :disabled='this.loading'>Update</button>
     <FormSubmission :msg="this.msg" />
   </div>
 </template>
 
 <script>
-import LoadingElement from '../components/LoadingElement.vue'
 import FormSubmission from '../components/FormSubmission.vue'
 import gotrue from '../shared/gotrue.js'
 
@@ -17,7 +15,6 @@ console.log('Vue component - UpdateCity.vue')
 export default {
   name: 'UpdateCity',
   components: {
-    LoadingElement,
     FormSubmission
   },
   data () {

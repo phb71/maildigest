@@ -12,6 +12,7 @@
   "dependencies": {
     "@netlify/functions": "^1.0.0",
     "axios": "^0.26.1",
+    "daisyui": "^2.19.0",
     "postmark": "^3.0.1",
     "vue": "^3.2.25",
     "vue-plugin-load-script": "^2.1.1",
