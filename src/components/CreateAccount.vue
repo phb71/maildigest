@@ -1,18 +1,14 @@
 <template>
   <div>
-    <p>
-      <label
-        >Email
-        <input type="text" v-model="email" required />
-      </label>
-    </p>
-    <p>
-      <label
-        >Password
-        <input type="password" v-model="password" required />
-      </label>
-    </p>
-    <button :class="{ loading: this.loading }" @click="createAccount" :disabled='this.loading'>Sign me up!</button>
+  <p class="mb-6">
+    <label>Email</label>
+    <input type="email" v-model="email" required />
+  </p>
+  <p class="mb-6">
+    <label>Password</label>
+    <input type="password" v-model="password" required />
+  </p>
+    <button :class="{ loading: this.loading }" @click="createAccount" :disabled='this.loading'>Create my account</button>
     <FormSubmission :msg="this.msg" />
   </div>
 </template>

@@ -28,4 +28,4 @@
 //   return dayName
 // }
 
-// exports.weekday = 'asdf'
+export default 'asdf'

@@ -7,7 +7,7 @@
 </template>
 <script>
 import gotrue from '../shared/gotrue.js'
-// import { weekday } from '../shared/weekday'
+// import weekday from '~/shared/weekday.js'
 import axios from 'axios'
 
 console.log('Vue view - DigestPage.vue')
@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       city: {},
-      today: '', // weekday,
+      today: '', //weekday
       temperature: null
     }
   },

@@ -1,12 +1,26 @@
 <template>
-  <div>
-    <div id="nav">
-      <router-link to="/signup">Sign up</router-link>&nbsp;
-      <router-link to="/signin">Sign in</router-link>&nbsp;
-      <router-link to="/account">Account</router-link>&nbsp;
-      <router-link to="/digest">Digest</router-link>&nbsp;
+  <div class="w-4/12 inline-block">
+  <nav>
+    <div class="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
+            <ul>
+                <li>
+                    <router-link to="/signup">Sign up</router-link>
+                </li>
+                <li>
+                    <router-link to="/signin">Sign in</router-link>
+                </li>
+                <li>
+                    <router-link to="/account">Account</router-link>
+                </li>
+                <li>
+                    <router-link to="/digest">Digest</router-link>
+                </li>
+            </ul>
     </div>
-    <router-view />
+  </nav>
+    <div class="text-left">
+      <router-view />
+    </div>
   </div>
 </template>
 <script>
@@ -40,13 +54,3 @@ export default {
   }
 }
 </script>
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

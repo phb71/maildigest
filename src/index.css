@@ -4,8 +4,86 @@
 
 /* for global styles */
 @layer base {
+    body {
+        @apply text-center
+    }
+    p {
+        @apply my-4
+    }
+    h1 {
+        @apply text-3xl mt-10 mb-8
+    }
+    h2 {
+        @apply text-2xl
+    }
+    h3 {
+        @apply text-xl
+    }
+    nav {
+        @apply
+        bg-gray-50 
+        dark:bg-gray-700
+    }
+    nav ul {
+        @apply 
+        flex 
+        flex-row 
+        mt-0 
+        mr-6 
+        space-x-8 
+        text-sm 
+        font-medium
+    }
+    nav li {
+        @apply
+        text-gray-900 
+        dark:text-white 
+        hover:underline
+    }
     button {
-        @apply btn before:border-solid;
+        @apply 
+        py-2 
+        px-5 
+        text-base 
+        font-medium 
+        text-center 
+        text-white 
+        bg-blue-700 
+        rounded-lg 
+        hover:bg-blue-800 
+        focus:ring-4 
+        focus:outline-none 
+        focus:ring-blue-300 
+        dark:bg-blue-600 
+        dark:hover:bg-blue-700 
+        dark:focus:ring-blue-800
+    }
+    input {
+        @apply 
+        p-2
+        text-base 
+        rounded-lg 
+        w-64
+        bg-gray-50 border 
+        border-gray-300 
+        text-gray-900 
+        focus:ring-blue-500 
+        focus:border-blue-500  
+        dark:bg-gray-700 
+        dark:border-gray-600 
+        dark:placeholder-gray-400 
+        dark:text-white 
+        dark:focus:ring-blue-500 
+        dark:focus:border-blue-500
+    }
+    label {
+        @apply 
+        block 
+        mb-2 
+        text-sm 
+        font-medium 
+        text-gray-900 
+        dark:text-gray-300
     }
 
 }
