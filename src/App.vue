@@ -1,25 +1,23 @@
 <template>
-  <div class="w-4/12 inline-block">
-  <nav>
-    <div class="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
-            <ul>
-                <li>
-                    <router-link to="/signup">Sign up</router-link>
-                </li>
-                <li>
-                    <router-link to="/signin">Sign in</router-link>
-                </li>
-                <li>
-                    <router-link to="/account">Account</router-link>
-                </li>
-                <li>
-                    <router-link to="/digest">Digest</router-link>
-                </li>
-            </ul>
-    </div>
-  </nav>
-    <div class="text-left">
-      <router-view />
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/signup">Sign up</router-link>
+        </li>
+        <li>
+          <router-link to="/signin">Sign in</router-link>
+        </li>
+        <li>
+          <router-link to="/account">Account</router-link>
+        </li>
+        <li>
+          <router-link to="/digest">Digest</router-link>
+        </li>
+      </ul>
+    </nav>
+    <div class="flex justify-center text-left mt-6">
+      <router-view class="basis-96" />
     </div>
   </div>
 </template>
@@ -42,7 +40,7 @@ export default {
         console.log('recover_token')
         gotrue.auth
           .recover(tokenRecovery, true)
-          .then(response => {
+          .then((response) => {
             console.log(response)
             this.$router.push('/resetpassword')
           })

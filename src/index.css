@@ -4,6 +4,12 @@
 
 /* for global styles */
 @layer base {
+    .loading {
+        @apply 
+        !bg-blue-400 /* important */
+        hover:bg-blue-400 
+        cursor-not-allowed 
+    }
     body {
         @apply text-center
     }
@@ -11,7 +17,7 @@
         @apply my-4
     }
     h1 {
-        @apply text-3xl mt-10 mb-8
+        @apply text-3xl
     }
     h2 {
         @apply text-2xl
@@ -19,62 +25,65 @@
     h3 {
         @apply text-xl
     }
+    a {
+        @apply
+        ml-auto 
+        text-sm 
+        font-medium
+        text-blue-700 
+        hover:underline
+    }
     nav {
         @apply
         bg-gray-50 
-        dark:bg-gray-700
     }
     nav ul {
         @apply 
         flex 
-        flex-row 
         mt-0 
         mr-6 
-        space-x-8 
-        text-sm 
+        py-3 
+        px-4
+        space-x-8  
         font-medium
+        justify-center
     }
-    nav li {
+    label {
         @apply
-        text-gray-900 
-        dark:text-white 
-        hover:underline
+        block 
+        mb-2 
+        text-sm 
+        font-medium 
+        text-gray-900
     }
     button {
         @apply 
-        py-2 
+        py-2.5 
         px-5 
-        text-base 
+        w-full 
         font-medium 
+        text-sm
         text-center 
+        inline-flex 
+        items-center
         text-white 
-        bg-blue-700 
+        !bg-blue-700 /* important */
         rounded-lg 
         hover:bg-blue-800 
         focus:ring-4 
         focus:outline-none 
         focus:ring-blue-300 
-        dark:bg-blue-600 
-        dark:hover:bg-blue-700 
-        dark:focus:ring-blue-800
     }
     input {
         @apply 
-        p-2
-        text-base 
+        p-2.5
+        text-sm 
         rounded-lg 
-        w-64
-        bg-gray-50 border 
+        w-full
+        border
+        bg-gray-50  
         border-gray-300 
-        text-gray-900 
-        focus:ring-blue-500 
-        focus:border-blue-500  
-        dark:bg-gray-700 
-        dark:border-gray-600 
-        dark:placeholder-gray-400 
-        dark:text-white 
-        dark:focus:ring-blue-500 
-        dark:focus:border-blue-500
+        text-gray-900
     }
     label {
         @apply 
@@ -83,7 +92,6 @@
         text-sm 
         font-medium 
         text-gray-900 
-        dark:text-gray-300
     }
 
 }

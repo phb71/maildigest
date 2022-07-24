@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h1>Your account</h1>
     <h2>Personal info</h2>
       <b>Name:</b> {{ this.firstName || 'Not set'}}
       <p><UpdateName @changeName="(n) => this.firstName = n" /></p>

@@ -1,8 +1,7 @@
 <template>
 <div>
-  <h1>Account sign in</h1>
   <LoginAccount />
-  <p><router-link to="/resetpassword">Reset password</router-link></p>
+  <p><router-link to="/resetpassword">Lost password?</router-link></p>
   </div>
 </template>
 <script>

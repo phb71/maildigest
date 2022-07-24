@@ -1,6 +1,5 @@
 <template>
   <div>
-  <h1>Account creation</h1>
   <CreateAccount />
   </div>
 </template>
