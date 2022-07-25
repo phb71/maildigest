@@ -9,7 +9,6 @@
         </svg>
         Send password recovery email
       </button>
-      <LoadingElement :loading="this.loading" />
       <FormSubmission :msg="this.msg" />
     </div>
     <div v-else>
@@ -18,7 +17,6 @@
         <input type="password" placeholder="Re-enter your new password" v-model="pwd2" />
       </p>
       <button @click="resetPassword" :disabled='this.loading'>Reset my password</button>
-      <LoadingElement :loading="this.loading" />
       <FormSubmission :msg="this.msg" />
     </div>
   </div>

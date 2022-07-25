@@ -1,5 +1,5 @@
 <template>
-  <form class="space-y-6  " action="#">
+  <form class="space-y-6" action="#">
     <div>
       <label for="email">
         Your email

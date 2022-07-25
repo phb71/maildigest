@@ -1,6 +1,6 @@
 <template>
   <div>
-  <EnterAccount type="signup" />
+    <EnterAccount type="signup" />
   </div>
 </template>
 <script>
