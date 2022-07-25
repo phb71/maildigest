@@ -3,18 +3,18 @@
     <h3>Hello {{ this.firstName || 'there' }} &#128075;</h3>
     <div>
       In your account, you can customise your daily email digest and
-      <router-link to="/digest">preview it</router-link>.
-      You can also <router-link to="/resetpassword">reset</router-link> your password or
+      <router-link to="/digest">preview it</router-link>. You can also
+      <router-link to="/resetpassword">reset</router-link> your password or
       <router-link to="/signout">sign out</router-link>.
     </div>
     <label
-      for="checked-toggle"
+      for="digest"
       class="inline-flex relative items-center cursor-pointer"
     >
       <input
         type="checkbox"
         value=""
-        id="checked-toggle"
+        id="digest"
         class="sr-only peer"
         :checked="this.digest"
         @click="switchDigest"
@@ -23,12 +23,42 @@
         class="toggle peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:bg-blue-600"
       ></div>
       <span class="ml-3 text-base font-medium text-gray-900"
-        >Your daily digest is turned {{ this.digest? 'on' : 'off' }}</span
+        >Your daily digest is turned {{ this.digest ? 'on' : 'off' }}</span
       >
     </label>
     <div><h3 class="mt-10">Add sections to customise your digest</h3></div>
     <div>
-      <h4>&#9728; Weather</h4>
+      <div class="flex justify-between">
+        <h4>&#9728; Weather</h4>
+        <!--<label
+          for="weather"
+          class="inline-flex relative items-center cursor-pointer"
+        >
+          <input type="checkbox" value="" id="weather" class="sr-only peer" />
+          <div
+            class="toggle peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:bg-blue-600"
+          ></div>
+        </label>-->
+        <a href=""
+          ><svg
+            class="w-6 h-6 shrink-0"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+      <p>
+        Get today's temperature and forecast:<br />
+        <span class="font-semibold">{{ this.city.name || '' }}</span>
+      </p>
+      <p><UpdateCity @changeCity="(n) => (this.city = n)" /></p>
     </div>
     <div>
       <!--
