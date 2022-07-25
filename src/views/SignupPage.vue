@@ -1,17 +1,17 @@
 <template>
   <div>
-  <CreateAccount />
+  <EnterAccount type="signup" />
   </div>
 </template>
 <script>
-import CreateAccount from '../components/CreateAccount.vue'
+import EnterAccount from '../components/EnterAccount.vue'
 
 console.log('Vue view - SignupPage.vue')
 
 export default {
   name: 'SignupPage',
   components: {
-    CreateAccount
+    EnterAccount
   },
   data () {
     return {}

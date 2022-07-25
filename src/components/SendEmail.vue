@@ -46,12 +46,12 @@ export default {
           this.firstName
         )
         console.log(response)
-        this.loading = false
         this.msg = 1
       } catch (error) {
         console.log(error)
-        this.loading = false
         this.msg = 2
+      } finally {
+        this.loading = false
       }
     }
   }

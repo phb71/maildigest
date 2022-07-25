@@ -27,7 +27,7 @@
 
     <button
       :class="{ loading: this.loading }"
-      @click="loginAccount"
+      @click="enterAccount"
       :disabled="this.loading"
       type="submit"
     >
@@ -49,7 +49,7 @@
           fill="currentColor"
         />
       </svg>
-      Sign in to my account
+      {{ this.type == 'signin' ? 'Sign in to my account' : 'Create new account' }}
     </button>
     <FormSubmission :msg="this.msg" />
   </form>
@@ -58,10 +58,11 @@
 import FormSubmission from '../components/FormSubmission.vue'
 import gotrue from '../shared/gotrue.js'
 
-console.log('Vue component - LoginAccount.vue')
+console.log('Vue component - EnterAccount.vue')
 
 export default {
-  name: 'LoginAccount',
+  name: 'EnterAccount',
+  props: ['type'],
   components: {
     FormSubmission
   },
@@ -76,27 +77,42 @@ export default {
   mounted () {
     if (gotrue.auth.currentUser()) {
       this.$router.push('/account')
-    } else {
-      this.$router.push('/signin')
     }
   },
   methods: {
-    // This method logs the user in.
-    loginAccount () {
+    // This method logs the user in or create a new user account.
+    enterAccount () {
       this.loading = true
       this.msg = 0
-      gotrue.auth
-        .login(this.email, this.password, true)
-        .then((response) => {
-          this.msg = 1
-          this.$router.push('/account')
-          this.loading = false
-        })
-        .catch((error) => {
-          this.msg = 2
-          console.log('Failed :( ' + JSON.stringify(error))
-          this.loading = false
-        })
+      if (this.type === 'signin') {
+        gotrue.auth
+          .login(this.email, this.password, true)
+          .then((response) => {
+            this.msg = 1
+            this.$router.push('/account')
+          })
+          .catch((error) => {
+            this.msg = 2
+            console.log('Failed :( ' + JSON.stringify(error))
+          })
+          .finally(() => {
+            this.loading = false
+          })
+      } else {
+        gotrue.auth
+          .signup(this.email, this.password)
+          .then((response) => {
+            console.log('Success', response)
+            this.msg = 1
+          })
+          .catch((error) => {
+            console.log("It 's an error", error)
+            this.msg = 2
+          })
+          .finally(() => {
+            this.loading = false
+          })
+      }
     }
   }
 }

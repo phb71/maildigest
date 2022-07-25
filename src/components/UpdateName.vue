@@ -45,14 +45,15 @@ export default {
         .then((user) => {
           console.log('User updated', user)
           this.$emit('change-name', this.name)
-          this.loading = false
           this.msg = 1
         })
         .catch((error) => {
           console.log('Failed to update user: %o', error)
-          this.loading = false
           this.msg = 2
           throw error
+        })
+        .finally(() => {
+          this.loading = false
         })
     }
   }

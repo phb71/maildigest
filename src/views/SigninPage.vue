@@ -1,18 +1,18 @@
 <template>
 <div>
-  <LoginAccount />
+  <EnterAccount type="signin" />
   <p><router-link to="/resetpassword">Lost password?</router-link></p>
   </div>
 </template>
 <script>
-import LoginAccount from '../components/LoginAccount.vue'
+import EnterAccount from '../components/EnterAccount.vue'
 
 console.log('Vue view - SigninPage.vue')
 
 export default {
   name: 'SigninPage',
   components: {
-    LoginAccount
+    EnterAccount
   },
   data () {
     return {}

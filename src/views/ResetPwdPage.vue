@@ -58,13 +58,14 @@ export default {
       gotrue.auth
         .requestPasswordRecovery(this.email)
         .then(() => {
-          this.loading = false
           this.msg = 1
         })
         .catch((error) => {
           console.log(error)
-          this.loading = false
           this.msg = 2
+        })
+        .finally(() => {
+          this.loading = false
         })
     },
 
@@ -79,13 +80,14 @@ export default {
         user
           .update({ email: user.email, password: this.pwd1 })
           .then(user => {
-            this.loading = false
             this.msg = 1
           })
           .catch(error => {
             console.log(error)
-            this.loading = false
             this.msg = 2
+          })
+          .finally(() => {
+            this.loading = false
           })
       }
     }
